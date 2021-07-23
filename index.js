@@ -1,17 +1,22 @@
-const { Client } = require("discord.js");
-const runServer = require("./server");
 require("dotenv").config();
+const runServer = require("./server");
+const { Client } = require("discord.js");
+const {getRandomQuote, getFamousQuote} = require('./bot_commands/commands')
 
 const client = new Client();
 
 client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag}!`);
+  console.log("[+] Bot is running...");
 });
 
 client.on("message", (msg) => {
+  const { content }  = msg
   if (msg.author.bot) return;
-  if (msg.content === "bruv") {
-    msg.reply("kekw 🤡");
+  if (content === "$q random"){
+    getRandomQuote(msg)
+  }
+  if (content === "$q famous"){
+    getFamousQuote(msg)
   }
 });
 
