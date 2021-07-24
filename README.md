@@ -42,7 +42,7 @@
 
 ---
 
-### 🧑🏽Author.
+### 🧑🏽 Author.
 
 - Twitter: https://twitter.com/ZYacouri
 - Email: co.yacouri@gmail.com
