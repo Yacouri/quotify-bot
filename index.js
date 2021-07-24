@@ -1,7 +1,11 @@
 require("dotenv").config();
 const runServer = require("./server");
 const { Client } = require("discord.js");
-const { getRandomQuote, getFamousQuote, getQuoteWithTag } = require("./bot_commands/commands");
+const {
+  getRandomQuote,
+  getFamousQuote,
+  getQuoteWithTag,
+} = require("./bot_commands/commands");
 
 const client = new Client();
 

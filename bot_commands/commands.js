@@ -58,7 +58,7 @@ const getFamousQuote = (msg) => {
 };
 
 // get random quote with a specific tag
-const getQuoteWithTag = (msg, tag) =>{
+const getQuoteWithTag = (msg, tag) => {
   const { username } = msg.member.user;
   const avatar = msg.author.displayAvatarURL({ dynamic: true });
   axios.get(`/random?tag=${tag}`).then((res) => {
@@ -68,6 +68,6 @@ const getQuoteWithTag = (msg, tag) =>{
       quoteMessageTemplate(author, content, "#1ABC9C", tags, username, avatar)
     );
   });
-}
+};
 
 module.exports = { getRandomQuote, getFamousQuote, getQuoteWithTag };
