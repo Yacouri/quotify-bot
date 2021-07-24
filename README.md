@@ -3,7 +3,7 @@
 
 # Quotify-bot 🎇
 
-*Discord bot that generate quotes.*
+*Discord bot that generates quotes.*
 
 ---
 
