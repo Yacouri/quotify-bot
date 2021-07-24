@@ -1,2 +1,2 @@
 # quotify-bot
-Discord bot that generate quotes based on mood
+Discord bot that generate quotes.
