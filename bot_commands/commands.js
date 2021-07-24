@@ -24,7 +24,7 @@ const quoteMessageTemplate = (author, title, color, tag, username, avatar) => {
     .setThumbnail(avatar)
     .addFields(
       { name: "Request by", value: username, inline: true },
-      { name: "Tag", value: ` #${tag[0]}`, inline: true },
+      { name: "Tag", value: ` #${tag}`, inline: true },
       { name: "Author", value: author, inline: true }
     )
     .setTimestamp();
@@ -34,23 +34,40 @@ const quoteMessageTemplate = (author, title, color, tag, username, avatar) => {
 // get random quote
 const getRandomQuote = (msg) => {
   const { username } = msg.member.user;
-  const avatar = msg.author.displayAvatarURL({ dynamic: true })
+  const avatar = msg.author.displayAvatarURL({ dynamic: true });
   axios.get("/random").then((res) => {
     const { author, content, tags } = res.data;
-    msg.reply('`🔎 looking for random quote...`')
-    msg.reply(quoteMessageTemplate(author, content, "#2ECC71", tags, username, avatar));
+    msg.reply("`🔎 looking for random quote...`");
+    msg.reply(
+      quoteMessageTemplate(author, content, "#2ECC71", tags, username, avatar)
+    );
   });
 };
 
-// get random with a specific tag
+// get random famous quote
 const getFamousQuote = (msg) => {
   const { username } = msg.member.user;
-  const avatar = msg.author.displayAvatarURL({ dynamic: true })
+  const avatar = msg.author.displayAvatarURL({ dynamic: true });
   axios.get("/random?tag=famous").then((res) => {
     const { author, content, tags } = res.data;
-    msg.reply('`🔎 looking for famous quote...`')
-    msg.reply(quoteMessageTemplate(author, content, "#F1C40F", tags, username, avatar));
+    msg.reply("`🔎 looking for famous quote...`");
+    msg.reply(
+      quoteMessageTemplate(author, content, "#F1C40F", tags, username, avatar)
+    );
   });
 };
 
-module.exports = { getRandomQuote, getFamousQuote };
+// get random quote with a specific tag
+const getQuoteWithTag = (msg, tag) => {
+  const { username } = msg.member.user;
+  const avatar = msg.author.displayAvatarURL({ dynamic: true });
+  axios.get(`/random?tag=${tag}`).then((res) => {
+    const { author, content, tags } = res.data;
+    msg.reply(`🔎 looking for quote with *${tag}* tag...`);
+    msg.reply(
+      quoteMessageTemplate(author, content, "#1ABC9C", tags, username, avatar)
+    );
+  });
+};
+
+module.exports = { getRandomQuote, getFamousQuote, getQuoteWithTag };
