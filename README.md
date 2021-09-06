@@ -1,5 +1,4 @@
-![Quotify-bot cover]('./assets/quorify_cover.png')
-
+<img src="./assets/quorify_cover.png" alt="Quotify-bot cover">
 
 # Quotify-bot 🎇
 
